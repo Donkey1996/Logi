@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Custom utility classes for the logic gates app */
+@layer components {
+  .gate-container {
+    @apply relative inline-block p-4 rounded-lg border-2 border-gray-300 bg-white shadow-lg transition-all duration-300;
+  }
+  
+  .gate-container:hover {
+    @apply border-blue-400 shadow-xl;
+  }
+  
+  .wire {
+    @apply stroke-2 stroke-gray-600 fill-none transition-all duration-300;
+  }
+  
+  .wire.active {
+    @apply stroke-blue-500;
+  }
+  
+  .logic-input {
+    @apply w-6 h-6 rounded-full border-2 border-gray-400 bg-white cursor-pointer transition-all duration-200;
+  }
+  
+  .logic-input.high {
+    @apply bg-green-500 border-green-600;
+  }
+  
+  .logic-input.low {
+    @apply bg-gray-200 border-gray-400;
+  }
+  
+  .truth-table {
+    @apply border border-gray-300 rounded-lg overflow-hidden;
+  }
+  
+  .truth-table th {
+    @apply bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700 border-b border-gray-300;
+  }
+  
+  .truth-table td {
+    @apply px-4 py-2 text-sm text-center border-b border-gray-200;
+  }
+  
+  .truth-table td.highlight {
+    @apply bg-blue-50 text-blue-800;
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-signal-flow {
+    animation: signalFlow 2s linear infinite;
+  }
+  
+  .animate-gate-glow {
+    animation: gateGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
